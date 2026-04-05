@@ -1,8 +1,26 @@
 import React from 'react';
+import { NavLink } from 'react-router';
 
 const Navbar = () => {
+
+    const links  = () => {
+  return   ( 
+     <>
+        <li>
+      <NavLink to={'/'} className={({isActive}) => `font-semibold mr-1.5 ${isActive ? "text-green-500 border-2 border-green-500" : ""}` } >Home</NavLink>
+        </li>
+        <li>
+         <NavLink to={'/books'} className={({isActive}) => `font-semibold mr-1.5 ${isActive ? "text-green-500 border-2 border-green-500" : ""}` }  >Listed Books</NavLink>
+        </li>
+        <li>
+            <NavLink to={'/page-to-read'} className={({isActive}) => `font-semibold mr-1.5 ${isActive ? "text-green-500 border-2 border-green-500" : ""}` } >Page To Read</NavLink>
+        </li>
+        </>
+        )
+    }
+
     return (
-       <div className="navbar bg-base-100 shadow-sm">
+<div className="navbar bg-base-100 shadow-sm">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -22,25 +40,16 @@ const Navbar = () => {
         <li><a>Item 3</a></li>
       </ul>
     </div>
-    <a className="btn btn-ghost text-xl">daisyUI</a>
+    <a className=" text-xl font-bold">BooksVibes</a>
   </div>
   <div className="navbar-center hidden lg:flex">
-    <ul className="menu menu-horizontal px-1">
-      <li><a>Item 1</a></li>
-      <li>
-        <details>
-          <summary>Parent</summary>
-          <ul className="p-2 bg-base-100 w-40 z-1">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
-          </ul>
-        </details>
-      </li>
-      <li><a>Item 3</a></li>
-    </ul>
+    <button className="menu menu-horizontal px-1">
+     {links()}
+    </button>
   </div>
-  <div className="navbar-end">
-    <a className="btn">Button</a>
+  <div className="navbar-end gap-2">
+    <button className='btn bg-green-500 py-1.5 text-white'>Sign in</button>
+    <button className='btn bg-sky-400 py-1.5 text-white'>Sign Up</button>
   </div>
 </div>
     );
