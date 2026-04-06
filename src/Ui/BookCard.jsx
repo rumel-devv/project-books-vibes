@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaRegStar } from 'react-icons/fa';
 import { Link } from 'react-router';
 
 const BookCard = ({book}) => {
@@ -22,8 +23,8 @@ const BookCard = ({book}) => {
     <p> By: {book.author} </p>
 
     <div className=' border-t border-dashed py-6 border-gray-400 flex justify-between items-center'>
-     <p> {book.category} </p>
-     <p> {book.rating} </p>
+     <p className='font-semibold'> {book.category} </p>
+     <p className='flex items-center gap-2 font-semibold'> {book.rating} <FaRegStar></FaRegStar> </p>
     </div>
    </div>
 </Link>   
