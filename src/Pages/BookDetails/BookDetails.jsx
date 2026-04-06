@@ -14,7 +14,7 @@ const expectedBook = books.find(book => book.bookId === Number(id))
  
 const {bookId,bookName,author,image,review,totalPages,rating,category,tags,publisher,yearOfPublishing} = expectedBook
 
-   const {handleMarkasRead,storedBooks} = useContext(BooksContext)
+   const {handleMarkasRead,storedBooks,handleWishList} = useContext(BooksContext)
    console.log(handleMarkasRead,storedBooks);
 
     return (
@@ -47,7 +47,7 @@ const {bookId,bookName,author,image,review,totalPages,rating,category,tags,publi
     </div>
       <div className='space-x-3'>
          <button onClick={() => handleMarkasRead(expectedBook) } className='btn bg-transparent py-1 text-black'>Mark as Read</button>
-         <button className='btn bg-sky-600 py-1 text-white'>Add to Wish list</button>
+         <button onClick={()=> handleWishList(expectedBook)} className='btn bg-sky-600 py-1 text-white'>Add to Wish list</button>
       </div>
   </div>
 </div>
