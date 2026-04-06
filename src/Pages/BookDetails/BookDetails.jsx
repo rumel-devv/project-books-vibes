@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaRegStar } from 'react-icons/fa';
 import { useLoaderData, useParams } from 'react-router';
+import { BooksContext } from '../../Context/BookContext';
 
 // const booksPromise = fetch('/booksData.json').then(res => res.json())
 
@@ -13,6 +14,9 @@ const expectedBook = books.find(book => book.bookId === Number(id))
  
 const {bookId,bookName,author,image,review,totalPages,rating,category,tags,publisher,yearOfPublishing} = expectedBook
 
+   const {handleMarkasRead,storedBooks} = useContext(BooksContext)
+   console.log(handleMarkasRead,storedBooks);
+
     return (
  <div className="w-full md:w-10/12 mx-auto flex flex-col md:flex-row gap-10 py-8">
  <div className='bg-base-200 p-8 md:w-6/12 flex justify-center rounded-2xl'>
@@ -23,7 +27,7 @@ const {bookId,bookName,author,image,review,totalPages,rating,category,tags,publi
       alt="Album" />
   </figure>
  </div>
-  <div className="w-full md:w-1/2">
+  <div className="w-full md:w-1/2 p-2.5">
     <h2 className="card-title text-2xl">{bookName}</h2>
     <p className='my-3'>By: {author}</p>
     <p className="border border-r-0 border-l-0 border-dashed py-2 border-gray-400"> {category} </p>
@@ -42,8 +46,8 @@ const {bookId,bookName,author,image,review,totalPages,rating,category,tags,publi
          <p className='flex gap-3 items-center'>Rating: <span className='font-bold'>{rating} </span><FaRegStar></FaRegStar> </p>
     </div>
       <div className='space-x-3'>
-         <button className='btn bg-transparent py-1 text-black'>Sign in</button>
-         <button className='btn bg-sky-600 py-1 text-white'>Sign Up</button>
+         <button onClick={() => handleMarkasRead(expectedBook) } className='btn bg-transparent py-1 text-black'>Mark as Read</button>
+         <button className='btn bg-sky-600 py-1 text-white'>Add to Wish list</button>
       </div>
   </div>
 </div>
