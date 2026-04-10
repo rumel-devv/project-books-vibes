@@ -8,14 +8,14 @@ import { BooksContext } from '../../Context/BookContext';
 const BookDetails = () => {
     // const books = use(booksPromise)
     // console.log(books);
-     const books = useLoaderData()
-    const {id} = useParams()
+const books = useLoaderData()
+const {id} = useParams()
 const expectedBook = books.find(book => book.bookId === Number(id))
  
 const {bookId,bookName,author,image,review,totalPages,rating,category,tags,publisher,yearOfPublishing} = expectedBook
 
    const {handleMarkasRead,storedBooks,handleWishList} = useContext(BooksContext)
-   console.log(handleMarkasRead,storedBooks);
+//    console.log(handleMarkasRead,storedBooks);
 
     return (
  <div className="w-full md:w-10/12 mx-auto flex flex-col md:flex-row gap-10 py-8">

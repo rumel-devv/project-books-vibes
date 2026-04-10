@@ -9,7 +9,7 @@ const AllBooks = () => {
     
     return (
         <div className='my-12 w-full md:w-9/12 mx-auto'>
-            <h2 className='font-bold text-3xl text-center'>books</h2>
+            <h2 className='font-bold text-3xl text-center'>Books</h2>
  <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-2'>
        {books.map(book  => {
         return (

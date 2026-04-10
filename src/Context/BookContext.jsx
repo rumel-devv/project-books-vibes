@@ -1,5 +1,6 @@
-import { createContext,useState } from "react";
+import { createContext,useEffect,useState } from "react";
 import { toast } from "react-toastify";
+import { addReadListToLocalDb, getAllreadListFromLocalDb } from "../utilitis/localDb";
 
 
 export const BooksContext = createContext();
@@ -7,16 +8,17 @@ export const BooksContext = createContext();
 
 const BookProvider = ({children}) => {
   
-    const [storedBooks,setStoredBooks] = useState([])
+    const [storedBooks,setStoredBooks] = useState(() => getAllreadListFromLocalDb())
     const [wishList,setWishList] = useState([]) 
 
-   
+ 
     const handleMarkasRead = (currentBook) => {
         //  Step 1. Store Book id or Book Object
         //  step 2. Where to collectiuon
         //  Step 3. Array or  Coolection
         //  Step 4. If book exist show a alert or toast 
-        //  Step 5. If not add the book in array or Coolection 
+        //  Step 5. If not add the book in array or Coolection \
+        addReadListToLocalDb(currentBook)
         const isExistBook =  storedBooks.find((book) => book.bookId == currentBook.bookId) ;
         if(isExistBook){
             toast.error('Book Al Ready Exist')
